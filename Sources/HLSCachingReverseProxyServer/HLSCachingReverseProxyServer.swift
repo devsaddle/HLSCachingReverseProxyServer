@@ -189,6 +189,7 @@ open class HLSCachingReverseProxyServer {
   }
 
   private func cacheKey(for resourceURL: URL) -> String {
-    return resourceURL.absoluteString.data(using: .utf8)!.base64EncodedString()
+    let urlString = resourceURL.absoluteString
+    return String(urlString.hashValue)
   }
 }
